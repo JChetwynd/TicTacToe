@@ -1,1 +1,57 @@
+.nav {
+  display: flex;
+  background: #ce8888;
+  flex-basis: 100px;
+  height: auto;
+  margin: 30px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 5px;
+  align-items: center;
+  justify-content: center;
+}
 
+.nav2 {
+  display: flex;
+  height: 50px;
+  margin: auto;
+  padding: 25px;
+  align-items: center;
+  justify-content: center;
+  transform:scale(2);
+  font-family: sans-serif;
+}
+
+.nav3 {
+  display: flex;
+  background: none;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  transform:scale(4);
+  cursor: pointer;
+}
+
+
+
+.gameGrid {
+  background-color: tomato;
+  color: white;
+  border: 2px solid black;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  Width: 750px;
+  height: 750px;
+  grid-template-columns: 250px 250px 250px;
+  Grid-template-rows: 250px 250px 250px;
+  align-content: space-between;
+  justify-content: space-around;
+}
+
+.gameBox {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  
+}

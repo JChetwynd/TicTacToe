@@ -38,16 +38,27 @@ let gameStateDraw = (board) => {
 
 let takeTurn = (i) => {
   if (boardState[i]) {
-    return; //ALERT ALREADY PRESSED HERE;
+    return "ALREADY TAKEN"; //ALERT ALREADY PRESSED HERE;
   } else {
     boardState[i] = user;
     if (gameStateWin(boardState) === true) {
+      boardState = [null, null, null, null, null, null, null, null, null];
       return `Player ${user} WINS!`;
     }
     if (gameStateDraw(boardState)) {
+      boardState = [null, null, null, null, null, null, null, null, null];
       return `It's a DRAW`;
     }
     turnChange();
-    return boardState;
+    console.log(boardState);
   }
 };
+
+
+
+
+document.querySelectorAll(".gameBox").forEach(element => {
+  element.addEventListener("click", () => { takeTurn(element.dataset.index); });
+});
+
+

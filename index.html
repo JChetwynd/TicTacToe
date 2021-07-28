@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="main.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <nav class="nav">
   <div class="nav2"> Play Tic Tac Toe! </div>
-  <div class="nav2"> X to play next </div>
+  <div class="nav2 turnDisplay">X's Turn First</div>
   <div class="nav3"> <span class="material-icons">
 restart_alt
 </span></div>
@@ -20,15 +19,15 @@ restart_alt
   
 
   <div class="gameGrid">
-    <div class="gameBox"> </div>
-    <div class="gameBox"> </div>
-    <div class="gameBox"> </div>
-    <div class="gameBox"> </div>
-    <div class="gameBox"> </div>
-    <div class="gameBox"> </div>
-    <div class="gameBox"> </div>
-    <div class="gameBox"> </div>
-    <div class="gameBox"> </div>
+    <div class="gameBox" data-index="0"></div>
+    <div class="gameBox" data-index="1"></div>
+    <div class="gameBox" data-index="2"></div>
+    <div class="gameBox" data-index="3"></div>
+    <div class="gameBox" data-index="4"></div>
+    <div class="gameBox" data-index="5"></div>
+    <div class="gameBox" data-index="6"></div>
+    <div class="gameBox" data-index="7"></div>
+    <div class="gameBox" data-index="8"></div>
   </div>
     <div>Description of how it is played</div>
   <script src=".main.js" type="module"></script>

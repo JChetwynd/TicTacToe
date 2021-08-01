@@ -21,9 +21,11 @@ let gameStateWin = (board) => {
       board[winConditions[i][0]] === board[winConditions[i][1]] &&
       board[winConditions[i][1]] === board[winConditions[i][2]]
     ) {
+      console.log(winConditions[i])
       return true;
     }
   }
+  console.log("I am false")
   return false;
 };
 
@@ -49,37 +51,46 @@ let updateTile = (tileIndex) => {
   document.querySelectorAll(".gameBox")[tileIndex].textContent = user;
 };
 
+//perma var on win draw or inProgress
+let gameState = "inProgress";
 
+//checks for a winner or a draw
+let gameStateUpdater = (result) => {
+  if (result === "won") {
+    document.querySelector(".turnDisplay").textContent = `${user} Wins!`;
+    gameState = "complete";
+  } else if ((result === "draw")) {
+    document.querySelector(".turnDisplay").textContent = `It's a Draw!`;
+    gameState = "complete";
+  } else {
+    return;
+  }
+};
 
 // occurs on click - contains everything that needs to happen on click described elsewhere
 let takeTurn = (i) => {
-  //checks if the tile has been clicked already
-  if (boardState[i]) {
+  //checks if the tile has been clicked already and that the match isn't over
+  if (boardState[i] || gameState != "inProgress") {
     return;
   } else {
-    //checks if the game has been won
+    updateTile(i);
     boardState[i] = user;
-    if (gameStateWin(boardState) === true) {
-      document.querySelectorAll(".gameBox").forEach((element) => {
-        element.textContent = "";
-      });
-      document.querySelector(".turnDisplay").textContent = `${user} Wins!`;
+    //checks if the game has been won
+    if (gameStateWin(boardState)) {
+      gameStateUpdater("won");
       return;
     }
     //checks if the game has been drawn
-    if (gameStateDraw(boardState)) {
-      document.querySelectorAll(".gameBox").forEach((element) => {
-        element.textContent = "";
-      });
-      document.querySelector(".turnDisplay").textContent = `It's a Draw!`;
+    else if (gameStateDraw(boardState)) {
+      gameStateUpdater("draw");
       return;
+    } else {
+      //assuming the game is still in progress - updates the board, the top middle and the user
+      turnChange();
+      updateTurn();
+      console.log(boardState);
     }
-    //assuming all goes well - updates the board, the top middle and the user
-    updateTile(i);
-    turnChange();
-    updateTurn();
-
-    return boardState;
+    
   }
 };
 
@@ -89,7 +100,10 @@ document.querySelector(".nav3").addEventListener("click", () => {
   document.querySelectorAll(".gameBox").forEach((element) => {
     element.textContent = "";
   });
-  document.querySelector(".turnDisplay").textContent = `Board Reset! ${user} To Start`;
+  document.querySelector(
+    ".turnDisplay"
+  ).textContent = `${user} To Start`;
+  gameState = "inProgress";
 });
 
 //makes the tile click engage the game logic

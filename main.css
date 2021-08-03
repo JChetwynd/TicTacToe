@@ -54,5 +54,13 @@
   justify-content: center;
   display: flex;
   cursor: pointer;
+  transition: 0.2s;
 }
 
+.greyHover:hover {
+  background-color: #C7C7C7;
+}
+
+.redHover:hover {
+  background-color: #FF5050;
+}

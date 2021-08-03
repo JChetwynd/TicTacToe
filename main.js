@@ -25,7 +25,6 @@ let gameStateWin = (board) => {
       return true;
     }
   }
-  console.log("I am false")
   return false;
 };
 
@@ -49,6 +48,7 @@ let updateTurn = () => {
 //updates the tile on the game board with an x or an o
 let updateTile = (tileIndex) => {
   document.querySelectorAll(".gameBox")[tileIndex].textContent = user;
+  document.querySelectorAll(".gameBox")[tileIndex].classList.add("redHover");
 };
 
 //perma var on win draw or inProgress
@@ -90,7 +90,6 @@ let takeTurn = (i) => {
       updateTurn();
       console.log(boardState);
     }
-    
   }
 };
 
@@ -99,10 +98,9 @@ document.querySelector(".nav3").addEventListener("click", () => {
   boardState = [null, null, null, null, null, null, null, null, null];
   document.querySelectorAll(".gameBox").forEach((element) => {
     element.textContent = "";
+    element.classList.remove("redHover");
   });
-  document.querySelector(
-    ".turnDisplay"
-  ).textContent = `${user} To Start`;
+  document.querySelector(".turnDisplay").textContent = `${user} To Start`;
   gameState = "inProgress";
 });
 

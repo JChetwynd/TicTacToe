@@ -21,7 +21,7 @@ let gameStateWin = (board) => {
       board[winConditions[i][0]] === board[winConditions[i][1]] &&
       board[winConditions[i][1]] === board[winConditions[i][2]]
     ) {
-      console.log(winConditions[i])
+      console.log(winConditions[i]);
       return true;
     }
   }
@@ -59,7 +59,7 @@ let gameStateUpdater = (result) => {
   if (result === "won") {
     document.querySelector(".turnDisplay").textContent = `${user} Wins!`;
     gameState = "complete";
-  } else if ((result === "draw")) {
+  } else if (result === "draw") {
     document.querySelector(".turnDisplay").textContent = `It's a Draw!`;
     gameState = "complete";
   } else {
@@ -88,7 +88,9 @@ let takeTurn = (i) => {
       //assuming the game is still in progress - updates the board, the top middle and the user
       turnChange();
       updateTurn();
-      console.log(boardState);
+      if (aiSwitch === true) {
+        aiLogic();
+      }
     }
   }
 };
@@ -110,3 +112,28 @@ document.querySelectorAll(".gameBox").forEach((element) => {
     takeTurn(element.dataset.index);
   });
 });
+
+//AI Switch
+let aiSwitch = false;
+document.querySelector(".nav4").addEventListener("click", () => {
+  if (aiSwitch === false) {
+    aiSwitch = true;
+    document.querySelector(".nav4").textContent = "1 Player";
+  } else {
+    aiSwitch = false;
+    document.querySelector(".nav4").textContent = "2 Player";
+  }
+  console.log();
+});
+
+//AI game logic
+const aiLogic = () => {
+  let aiTurn = Math.floor(Math.random() * 8);
+  if (boardState[aiTurn] === null) {
+    aiSwitch = false;
+    takeTurn(aiTurn);
+    aiSwitch = true;
+  } else {
+    aiLogic();
+  }
+};

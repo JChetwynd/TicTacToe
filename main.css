@@ -1,6 +1,6 @@
 .nav {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 25% 25% 25% 25%;
   background: #ce8888;
   height: auto;
   margin: 30px;
@@ -27,6 +27,10 @@
   align-items: center;
   justify-items: center;
   transform: scale(3.2);
+  cursor: pointer;
+}
+
+.nav4 {
   cursor: pointer;
 }
 

@@ -1,12 +1,11 @@
 .nav {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 33% 33% 33%;
   background: #ce8888;
   height: auto;
   margin: 30px;
   padding: 10px;
-  border-style: solid;
-  
+  border-style: solid; 
 }
 
 .nav2 {
@@ -32,6 +31,18 @@
 
 .nav4 {
   cursor: pointer;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 0vw;
+  grid-template-columns: 25% 10% 30% 10% 25%;
+  grid-template-rows: 100%;
+}
+
+.options {
+  border: 1px solid black;
+  width: 10vw;
 }
 
 .gameGrid {

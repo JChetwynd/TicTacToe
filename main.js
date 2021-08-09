@@ -13,6 +13,8 @@ const winConditions = [
   [2, 4, 6]
 ];
 
+let timerOn = false;
+
 //runs a check to see if the game is won
 let gameStateWin = (board) => {
   for (let i = 0; i < winConditions.length; i++) {
@@ -89,7 +91,11 @@ let takeTurn = (i) => {
       turnChange();
       updateTurn();
       if (aiSwitch === true) {
-        aiLogic();
+        //slow the computer down - more realistic play
+        //timerOn check so that you can't play again whilst the computer is 'thinking'
+        timerOn = true;
+        setTimeout(aiLogic, 400);
+        setTimeout(function(){timerOn = false}, 400);
       }
     }
   }
@@ -109,7 +115,11 @@ document.querySelector(".nav3").addEventListener("click", () => {
 //makes the tile click engage the game logic
 document.querySelectorAll(".gameBox").forEach((element) => {
   element.addEventListener("click", () => {
-    takeTurn(element.dataset.index);
+    if (timerOn === true) {
+      return;
+    } else {
+      takeTurn(element.dataset.index);
+    }
   });
 });
 
